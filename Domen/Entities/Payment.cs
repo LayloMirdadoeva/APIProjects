@@ -1,12 +1,11 @@
 ﻿namespace Domain.Entities
 {
-    public class Payment
+    public class Payment : BaseEntity
     {
-        public Guid Id { get; set; }
         public decimal Amount { get; set; }
-        public DateTime PaymentDate { get; set; }
-        public string MethodPayment { get; set; }
-        public string StatusPayment { get; set; }
-        public Order Order { get; set; }
+        public DateTime Date { get; set; }
+        public string Method { get; set; }
+        public string Status { get; set; }
+        public Order? Order { get; set; }
     }
 }

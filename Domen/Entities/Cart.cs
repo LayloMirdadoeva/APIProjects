@@ -1,8 +1,9 @@
 ﻿namespace Domain.Entities
 {
-    public class Cart
+    public class Cart : BaseEntity
     {
-        public List<Product> Products { get; set; } = new List<Product>();
-        public Customer Customer { get; set; }
+        public int Number { get; set; }
+        public DateTime ValidityPeriod { get; set; }
+        public string CodeCVV { get; set; } = string.Empty;
     }
 }

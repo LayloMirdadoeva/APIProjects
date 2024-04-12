@@ -8,6 +8,8 @@
         public string Status { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();
-
+        public Guid CustomerId { get; set; }
+        public Guid ProductId { get; set; }
+        public Guid DiliveryId { get; set; }
     }
 }
