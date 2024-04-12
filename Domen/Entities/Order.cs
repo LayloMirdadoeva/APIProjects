@@ -9,6 +9,7 @@
         public DateTime Date { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();
         public Guid CustomerId { get; set; }
+        public Customer customer { get; set; }
         public Guid ProductId { get; set; }
         public Guid DiliveryId { get; set; }
     }

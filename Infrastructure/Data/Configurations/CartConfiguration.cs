@@ -8,13 +8,10 @@ namespace Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
-            builder.HasKey(cart => cart.Id);
-            builder.Property(cart => cart.Number)
-                .IsRequired();
-            builder.Property(cart => cart.ValidityPeriod)
-                .IsRequired();
-            builder.Property(cart => cart.CodeCVV)
-                .IsRequired();
+            builder.HasOne(cart => cart.customer)
+                .WithMany()
+                .HasForeignKey(cart => cart.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

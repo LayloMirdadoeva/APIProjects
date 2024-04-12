@@ -9,7 +9,8 @@
         public string Brand { get; set; } = string.Empty;
         public decimal PricePerPiece { get; set; }
         public Category Category { get; set; }
+        public Guid CategoryId { get; set; }
+        public Brand brand { get; set; }
         public Guid BrandId { get; set; }
-        //public  Brand? Brand { get; set; }
     }
 }

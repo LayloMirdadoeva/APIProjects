@@ -1,9 +1,10 @@
 ﻿namespace Domain.Entities
 {
-    public class Cart : BaseEntity
+    public class Cart : BaseEntity //Cart - это корзина 
     {
-        public int Number { get; set; }
-        public DateTime ValidityPeriod { get; set; }
-        public string CodeCVV { get; set; } = string.Empty;
+        public virtual ICollection<Product> Products { get; set; }
+        public Guid ProductId { get; set; }
+        public Customer customer { get; set; }
+        public Guid CustomerId { get; set; }
     }
 }

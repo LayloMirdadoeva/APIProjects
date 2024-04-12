@@ -6,6 +6,7 @@ namespace Domain.Entities
         public DateTime Date { get; set; }
         public DiliveryStatus Status { get; set; }
         public MethodDilivery Method { get; set; }
-        public Order? Order { get; set; }
+        public Order Order { get; set; }
+        public Guid OrderId { get; set; }    
     }
 }

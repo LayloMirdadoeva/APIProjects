@@ -21,19 +21,25 @@ namespace Infrastructure.Data.Configurations
             builder.Property(p => p.Size)
                 .IsRequired();
 
-            builder.Property(p=>p.Color)
+            builder.Property(p => p.Color)
                 .IsRequired();
 
             builder.Property(p => p.Brand)
                 .IsRequired();
 
-            builder.Property(p=>p.PricePerPiece)
-                .HasPrecision (10, 2)
+            builder.Property(p => p.PricePerPiece)
+                .HasPrecision(10, 2)
                 .IsRequired();
 
-            //builder.HasOne(p => p.Brand)
-            //    .WithMany(b => b.Products)
+            builder.HasOne(p => p.Brand)
+                   .WithMany()
+                   .HasForeignKey(p => p.BrandId)
+                   .OnDelete(DeleteBehavior.Restrict);
 
+            builder.HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

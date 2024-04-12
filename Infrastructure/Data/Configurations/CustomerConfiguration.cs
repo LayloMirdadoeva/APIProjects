@@ -21,6 +21,11 @@ namespace Infrastructure.Data.Configurations
                 .IsRequired();
             builder.Property(cus => cus.Email)
                 .IsRequired();
+
+            builder.HasMany(cus=> cus.Orders)
+                .WithOne(o =>o.customer)
+                .HasForeignKey(o => o.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

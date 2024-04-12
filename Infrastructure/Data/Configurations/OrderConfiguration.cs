@@ -23,6 +23,11 @@ namespace Infrastructure.Data.Configurations
                 .IsRequired();
             builder.Property(o => o.DiliveryId)
                 .IsRequired();
+
+            builder.HasOne(o=>o.customer)
+                .WithMany()
+                .HasForeignKey(o=>o.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

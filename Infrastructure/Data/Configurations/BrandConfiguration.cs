@@ -22,6 +22,11 @@ namespace Infrastructure.Data.Configurations
             builder.Property(b=>b.PhoneNumber)
                 .HasMaxLength(20)
                 .IsRequired();
+
+            builder.HasMany(b=>b.Products)
+                .WithOne()
+                .HasForeignKey(p=>p.BrandId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

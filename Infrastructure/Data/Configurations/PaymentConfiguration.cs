@@ -19,6 +19,11 @@ namespace Infrastructure.Data.Configurations
                .IsRequired();
             builder.Property(x => x.Date)
                .IsRequired();
+
+            builder.HasOne(x=>x.Order)
+                .WithMany()
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
