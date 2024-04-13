@@ -7,10 +7,17 @@
         public decimal TotalPrice { get; set; }
         public string Status { get; set; } = string.Empty;
         public DateTime Date { get; set; }
-        public List<Product> Products { get; set; }
-        public Guid CustomerId { get; set; }
-        public Customer customer { get; set; }
+
+        public Product Products { get; set; }
         public Guid ProductId { get; set; }
+       
+        public Customer Customers { get; set; }
+        public Guid CustomerId { get; set; }
+
+        public Dilivery Diliverys { get; set; }
         public Guid DiliveryId { get; set; }
+      
+
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }

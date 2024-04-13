@@ -15,7 +15,7 @@ namespace Infrastructure.Data.Configurations
                 .IsRequired();
 
             builder.Property(p => p.Price)
-                .HasPrecision(10, 2)
+                 .HasColumnType("decimal(18, 2)")
                 .IsRequired();
 
             builder.Property(p => p.Size)
@@ -23,23 +23,21 @@ namespace Infrastructure.Data.Configurations
 
             builder.Property(p => p.Color)
                 .IsRequired();
-
-            builder.Property(p => p.Brand)
-                .IsRequired();
+            
 
             builder.Property(p => p.PricePerPiece)
-                .HasPrecision(10, 2)
+                 .HasColumnType("decimal(18, 2)")
+                
                 .IsRequired();
-
-            builder.HasOne(p => p.Brand)
-                   .WithMany()
-                   .HasForeignKey(p => p.BrandId)
-                   .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasOne(p => p.Category)
+            builder.HasOne( p => p.Categorys)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(p => p.Brands)
+                .WithMany(b => b.Products)
+                .HasForeignKey(p => p.BrandId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

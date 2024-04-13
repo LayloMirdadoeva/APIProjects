@@ -14,20 +14,31 @@ namespace Infrastructure.Data.Configurations
             builder.Property(o=>o.Status)
                 .IsRequired();
             builder.Property(o=>o.Amount)
-                .IsRequired();  
-            builder.Property(o=>o.Date)
-                .IsRequired();
-            builder.Property(o=>o.CustomerId)
-                .IsRequired();
-            builder.Property(o => o.ProductId)
-                .IsRequired();
-            builder.Property(o => o.DiliveryId)
+                .HasColumnType("decimal(18, 2)")
                 .IsRequired();
 
-            builder.HasOne(o=>o.customer)
-                .WithMany()
-                .HasForeignKey(o=>o.CustomerId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.Property(o => o.TotalPrice)
+               .HasColumnType("decimal(18, 2)")
+               .IsRequired();
+            builder.Property(o=>o.Date)
+                .IsRequired();
+          
+            builder.HasOne(o => o.Products)
+                .WithMany(p => p.Orders)
+                .HasForeignKey(o=>o.ProductId)
+                .OnDelete(DeleteBehavior.Cascade); 
+
+            builder.HasOne(o => o.Customers)
+                .WithMany(c => c.Orders)
+                .HasForeignKey(o => o.CustomerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(o => o.Diliverys)
+                .WithMany(d => d.Orders)
+                .HasForeignKey(o => o.DiliveryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
         }
     }
 }

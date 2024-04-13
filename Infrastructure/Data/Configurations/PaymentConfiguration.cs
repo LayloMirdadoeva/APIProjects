@@ -13,17 +13,16 @@ namespace Infrastructure.Data.Configurations
                 .IsRequired();
             builder.Property(x => x.Method)
                .IsRequired();
-            builder.Property(x => x.Order)
-               .IsRequired();
+         
             builder.Property(x => x.Amount)
                .IsRequired();
             builder.Property(x => x.Date)
                .IsRequired();
-
-            builder.HasOne(x=>x.Order)
-                .WithMany()
+            builder.HasOne(x => x.Orders)
+                .WithMany(o => o.Payments)
                 .HasForeignKey(x => x.OrderId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
+       
         }
     }
 }

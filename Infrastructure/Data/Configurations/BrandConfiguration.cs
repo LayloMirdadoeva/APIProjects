@@ -23,10 +23,7 @@ namespace Infrastructure.Data.Configurations
                 .HasMaxLength(20)
                 .IsRequired();
 
-            builder.HasMany(b=>b.Products)
-                .WithOne()
-                .HasForeignKey(p=>p.BrandId)
-                .OnDelete(DeleteBehavior.Restrict);
+         
         }
     }
 }

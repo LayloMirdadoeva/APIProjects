@@ -14,8 +14,7 @@ namespace Infrastructure.Data.Configurations
                 .IsRequired();
             builder.Property(c => c.CategoryType)
                 .IsRequired();
-            builder.Property(c=>c.Products)
-                .IsRequired();
+         
         }
     }
 }

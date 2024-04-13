@@ -8,10 +8,19 @@ namespace Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
-            builder.HasOne(cart => cart.customer)
-                .WithMany()
-                .HasForeignKey(cart => cart.CustomerId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasKey(c => c.Id);
+
+            builder.HasOne(c => c.Products)
+                .WithMany(p => p.Carts)
+                .HasForeignKey(c => c.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(c => c.Customers)
+                 .WithMany(p => p.Carts)
+                 .HasForeignKey(c => c.CustomerId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
+
+
         }
     }
 }
