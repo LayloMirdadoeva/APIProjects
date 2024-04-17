@@ -8,6 +8,8 @@ namespace Application.Services
         Task<bool> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
         Task<bool> DeleteAsync(TEntity entity, CancellationToken cancellationToken = default);
         Task<TEntity> GetAsync(Guid Id,  CancellationToken cancellationToken = default);
-        Task<TEntity> GetAllAsync(TEntity entity,  CancellationToken cancellationToken = default);
+        //Task<TEntity> GetAllAsync(TEntity entity,  CancellationToken cancellationToken = default);
+        Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
+
     }
 }
