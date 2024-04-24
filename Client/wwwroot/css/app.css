@@ -101,3 +101,14 @@ a, .btn-link {
 code {
     color: #c02d76;
 }
+
+.submenu {
+    display: none; /* скрываем подменю по умолчанию */
+    position: absolute;
+    background-color: ghostwhite;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.nav-item:hover .submenu {
+    display: block; /* отображаем подменю при наведении на пункт меню */
+}

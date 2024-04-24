@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Common
+﻿namespace Application.Common;
+public interface IApplicationDbInitializer
 {
-    public interface IApplicationDbInitializer
-    {
-        void Initialize();
-    }
+    void Initialize();
 }
