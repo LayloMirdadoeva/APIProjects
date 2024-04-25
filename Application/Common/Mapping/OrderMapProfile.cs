@@ -10,7 +10,7 @@ public class OrderMapProfile : Profile
     {
         CreateMap<CreatOrderRequest, Order>();
         CreateMap<Order, SingleOrdereResponse>();
-
-
+        CreateMap<GetAllOrderRequest, GetAllOrderResponse>();
+        CreateMap<UpdateOrderRequest, Order>();
     }
 }

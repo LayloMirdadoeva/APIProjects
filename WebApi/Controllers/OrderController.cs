@@ -2,6 +2,7 @@
 using AutoMapper;
 using Contracts.Requests;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -19,6 +20,7 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Order>> Create([FromBody] CreatOrderRequest request, CancellationToken cancellationToken)
         {
@@ -39,7 +41,7 @@ namespace WebApi.Controllers
         public async Task<ActionResult<Order>> GetById([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var order = await _orderServise.GetAsync(id, cancellationToken);
-            if(order == null)
+            if (order == null)
                 return NotFound();
             return Ok(order);
         }
@@ -48,11 +50,11 @@ namespace WebApi.Controllers
         public async Task<ActionResult<Order>> Update([FromRoute] Guid id, [FromBody] UpdateOrderRequest request, CancellationToken cancellationToken)
         {
             var order = await _orderServise.GetAsync(id, cancellationToken);
-            if(order == null)
+            if (order == null)
                 return NotFound();
 
             _mapper.Map(request, order);
-            await _orderServise.UpdateAsync(order, cancellationToken);  
+            await _orderServise.UpdateAsync(order, cancellationToken);
 
             return Ok(order);
         }
@@ -61,12 +63,11 @@ namespace WebApi.Controllers
         public async Task<bool> DeleteAsync([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var order = await _orderServise.GetAsync(id, cancellationToken);
-            if(order == null)
+            if (order == null)
                 return false;
 
             await _orderServise.DeleteAsync(order, cancellationToken);
             return true;
-
         }
     }
 }
