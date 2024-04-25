@@ -1,10 +1,10 @@
 ﻿namespace Domain.Entities
 {
-    public class Category
+    public class Category : BaseEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string CategoryType { get; set; } = string.Empty;
-        public List<Product> Products { get; set; } = new List<Product>();
+       public virtual ICollection<Product> Products { get; set; }
+       
     }
 }

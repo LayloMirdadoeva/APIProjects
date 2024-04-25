@@ -1,8 +1,11 @@
 ﻿namespace Domain.Entities
 {
-    public class Cart
+    public class Cart : BaseEntity //Cart - это корзина 
     {
-        public List<Product> Products { get; set; } = new List<Product>();
-        public Customer Customer { get; set; }
+        public Product Products { get; set; }
+        
+        public Guid ProductId { get; set; }
+        public Customer Customers { get; set; }
+        public Guid CustomerId { get; set; }
     }
 }
